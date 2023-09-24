@@ -1,6 +1,6 @@
 # Anderson R Oliveira / 23-09-23
 
-# Scrip que faz a unificação automatica de diversos arquivos no mesmo padrao e realiza o insert no banco de dados.
+# Scrip que faz a unificação automatica de diversos arquivos no mesmo padrao e realiza o insert no banco de dados e gera um arquivo consolidado em CSV.
 
 #SugestaoUso: Reports diarios que necessitam ser unificados e armazenados/Automatização para analises dos dados.
 
@@ -23,9 +23,9 @@ print("Inicio Conexao com o BD")
 
 # Conexao com o BD
 
-server_name = '...............' # <-- Inserir o seu Servidor aqui
-database_name = 'develop_r4'
-table_name = 'AnaliticoCompras'
+server_name = '????????' # <-- Inserir o seu Servidor aqui
+database_name = 'develop_r4' # <-- Inserir o seu Banco de dados 
+table_name = 'AnaliticoCompras' # <-- Inserir a sua Tabela aqui
 
 connection_string = f"mssql+pyodbc://{server_name}/{database_name}?trusted_connection=yes&driver=ODBC+Driver+17+for+SQL+Server"
 
@@ -54,9 +54,9 @@ print("Inicio config diretorios")
 
 #Diretorio
 
-Dir = r'C:\Users\xxxx\Documentos\develop_r4' # <---- Adicionar aqui o caminho da pasta onde esta os arquivos, é necessario deixar tudo no mesmo diretorio
+Dir = r'C:\Users\?????\Documentos\PythonRepo' # <---- Adicionar aqui o caminho da pasta onde esta os arquivos, é necessario deixar tudo no mesmo diretorio
 
-SaveConcat = r'C:\Users\xxxx\Documentos\develop_r4\SaveConcat'  # <---- Criar uma pasta interna no diretorio para salvar o arquivo da unificacao, para evitar que a partir da 2º leitura, entre o arquivo unificado no fluxo, evitando a duplicidade.
+SaveConcat = r'C:\Users\?????\Documentos\PythonRepo\SaveConcat'  # <---- Criar uma pasta interna no diretorio para salvar o arquivo da unificacao, para evitar que a partir da 2º leitura, entre o arquivo unificado no fluxo, evitando a duplicidade.
 
 NomeArq = 'ArqConcat.csv'
 
@@ -94,8 +94,11 @@ print("Inicio Insert no Banco de Dados")
 
 #Le o arquivo
 
-df_concat.to_csv(caminhoPath, index=False)
+print(df_concat)
 
+#Salva arquivo diretorio
+
+df_concat.to_csv(caminhoPath, index=False)
 
 #Insere no BD
 df_concat.to_sql(table_name, engine, if_exists='replace', index=False)
@@ -104,9 +107,8 @@ print("Fim Insert no Banco de Dados")
 
 engine.dispose()
 
-
 print("End")
 
 end_time = time.time()
 total_duration = end_time - start_time
-print(f"Tempo total de execução: {total_duration:.2f} segundos")
+print(f" Finalizado com sucesso! Tempo total de execução: {total_duration:.2f} segundos")
