@@ -1,8 +1,8 @@
 # Anderson R Oliveira / 23-09-23
 
-# Scrip que faz a unificação automatica de diversos arquivos no mesmo padrao e realiza o insert no banco de dados e gera um arquivo consolidado em CSV.
+# Script que faz a unificação automatica de diversos arquivos no mesmo padrao, realiza o insert no banco de dados e gera um arquivo consolidado em CSV.
 
-#SugestaoUso: Reports diarios que necessitam ser unificados e armazenados/Automatização para analises dos dados.
+#SugestaoUso: Reports diarios que necessitam ser unificados e armazenados/Automatizacao para analises dos dados.
 
 # Todos os Dados dos arquivos sao ficticios.
 
@@ -111,4 +111,4 @@ print("End")
 
 end_time = time.time()
 total_duration = end_time - start_time
-print(f" Finalizado com sucesso! Tempo total de execução: {total_duration:.2f} segundos")
+print(f" Finalizado com sucesso! Tempo total de execucao: {total_duration:.2f} segundos")
