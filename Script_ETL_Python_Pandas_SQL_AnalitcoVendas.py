@@ -88,8 +88,6 @@ for arquivo_csv in arquivos_csv:
 
 #len(arquivos_csv)
 
-print("Fim ETL")
-
 print("Inicio Insert no Banco de Dados")
 
 #Le o arquivo
